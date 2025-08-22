@@ -33,11 +33,6 @@
 })(window, document, 'script', 'cloud.roistat.com', 'd20df0ccbb4df3083b910b01eadb65ae');
 </script>
 <!-- Roistat Counter End -->
-  const payload = {
-  title: "Dialog",              // Название заявки
-  phone: details.phone,         // Телефон клиента
-  roistat_visit: details.roistatId // Значение cookie roistat_visit
-};
 
 fetch("https://cloud.roistat.com/integration/webhook?key=YTY4YTNiNDU2YjZmZWY3ZTNmZGY3OWJlZGQ3NWYzNTA6MjkyODY5", {
   method: "POST",
