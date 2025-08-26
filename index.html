@@ -1,7 +1,27 @@
 <!doctype html>
 <html lang="ru">
 <head>
-      color:var(--text); background: radial-gradient(1200px 800px at 80% -20%, #1a245a33, transparent), var(--bg);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Одностраничный сайт</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --text:#f3f4f6;
+      --text-dim:#9ca3af;
+      --accent:#60a5fa;
+      --muted:#a78bfa;
+      --border:#1f2937;
+      --radius:16px;
+      --shadow:0 4px 18px rgba(0,0,0,.4);
+    }
+
+    body{
+      margin:0;
+      font-family:system-ui, sans-serif;
+      line-height:1.5;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 80% -20%, #1a245a33, transparent), var(--bg);
     }
     a{color:var(--accent); text-decoration:none}
     a:hover{text-decoration:underline}
@@ -173,7 +193,7 @@
           <p class="muted">Этот шаблон — отправная точка. Добавьте свои разделы, подключите аналитику, формы или CMS.</p>
           <ul>
             <li>Семантическая верстка</li>
-            <li>Доступные элементы (aria‑метки, контрасты)</li>
+            <li>Доступные элементы (aria-метки, контрасты)</li>
             <li>Быстрый Lighthouse из коробки</li>
           </ul>
         </div>
