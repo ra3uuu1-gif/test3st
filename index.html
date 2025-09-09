@@ -1,25 +1,6 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<script id="numloaderId" type="application/javascript">
-function loadJS(file) {
-var jsElm = document.getElementById("numloaderId");
-if (jsElm != null) {
-jsElm.parentNode.removeChild(jsElm);
-}
-jsElm = document.createElement("script");
-jsElm.setAttribute("id", "numloaderId");
-jsElm.type = "application/javascript";
-jsElm.src = file;
-document.body.appendChild(jsElm);
-
-window.setTimeout(function() {
-loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=cf7f379c-37dc-4c13-bb38-53c06fd42fd3";);
-}, 86400000);
-}
-
-loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=cf7f379c-37dc-4c13-bb38-53c06fd42fd3";);
-</script>
 <script>(function () { var widget = document.createElement('script'); widget.defer = true; widget.dataset.pfId = '170f41d2-e5a2-4633-9e80-c9612aef8287'; widget.src = 'https://widget.yourgood.app/script/widget.js?id=170f41d2-e5a2-4633-9e80-c9612aef8287&now='+Date.now(); document.head.appendChild(widget); })()</script>
     <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -34,6 +15,23 @@ loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=cf7f379
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/103877649" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+    <script id="numloaderId" type="application/javascript"> 
+    function loadJS(file) {  
+       var jsElm = document.getElementById("numloaderId");  
+       if(jsElm != null) {  
+           jsElm.parentNode.removeChild(jsElm);  
+       } 
+       jsElm = document.createElement("script");  
+       jsElm.setAttribute("id", "numloaderId");  
+       jsElm.type = "application/javascript";  
+       jsElm.src = file;  
+       document.body.appendChild(jsElm);  
+       window.setTimeout(function() {  
+           loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=0e31da7b-d173-458e-8681-fa16e2db50dc");  
+       }, 864E5);  
+   }  
+   loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=0e31da7b-d173-458e-8681-fa16e2db50dc");  
+ </script>
 
     <style>
     :root{
