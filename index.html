@@ -15,23 +15,45 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/103877649" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-    <script id="numloaderId" type="application/javascript"> 
-    function loadJS(file) {  
-       var jsElm = document.getElementById("numloaderId");  
-       if(jsElm != null) {  
-           jsElm.parentNode.removeChild(jsElm);  
-       } 
-       jsElm = document.createElement("script");  
-       jsElm.setAttribute("id", "numloaderId");  
-       jsElm.type = "application/javascript";  
-       jsElm.src = file;  
-       document.body.appendChild(jsElm);  
-       window.setTimeout(function() {  
-           loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=0e31da7b-d173-458e-8681-fa16e2db50dc");  
-       }, 864E5);  
-   }  
-   loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=0e31da7b-d173-458e-8681-fa16e2db50dc");  
- </script>
+    <script id="numloaderId" type="application/javascript">
+    function loadJS(file) {
+        // Удаляем старый скрипт если существует
+        var oldScript = document.getElementById("numloaderId");
+        if (oldScript !== null) {
+            oldScript.parentNode.removeChild(oldScript);
+        }
+        
+        // Создаем новый script элемент
+        var newScript = document.createElement("script");
+        newScript.id = "numloaderId";
+        newScript.type = "application/javascript";
+        newScript.src = file;
+        
+        // Добавляем в body (проверяем что body существует)
+        if (document.body) {
+            document.body.appendChild(newScript);
+        } else {
+            // Если body еще не загружен, ждем готовности DOM
+            document.addEventListener('DOMContentLoaded', function() {
+                document.body.appendChild(newScript);
+            });
+        }
+        
+        // Обновляем скрипт каждые 24 часа (86400000 миллисекунд)
+        setTimeout(function() {
+            loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=cf7f379c-37dc-4c13-bb38-53c06fd42fd3");
+        }, 86400000);
+    }
+    
+    // Запускаем загрузку когда DOM готов
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=cf7f379c-37dc-4c13-bb38-53c06fd42fd3");
+        });
+    } else {
+        loadJS("https://allostat.ru/public_api/allostat/numloader.js?customerUid=cf7f379c-37dc-4c13-bb38-53c06fd42fd3");
+    }
+</script>
 
     <style>
     :root{
