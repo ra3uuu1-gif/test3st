@@ -452,13 +452,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct
   }
 </style>
 
-<!-- ====== Кнопка и popup виджета ====== -->
+<!-- Поправленный блок кнопки -->
 <style>
-  /* Кнопка чата */
-  .chat-launcher {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
+  #chatLauncher {
+    position: fixed !important;
+    bottom: 24px !important;
+    right: 24px !important;
     width: 64px;
     height: 64px;
     border-radius: 50%;
@@ -471,19 +470,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .chat-launcher:hover {
-    transform: scale(1.07);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+    z-index: 2147483647 !important; /* максимально сверху */
   }
 
-  /* Popup */
-  .chat-popup {
-    position: fixed;
-    bottom: 100px;
-    right: 24px;
+  #chatPopup {
+    position: fixed !important;
+    bottom: 100px !important;
+    right: 24px !important;
     background: #0e1630;
     color: white;
     border: 1px solid #1f2937;
@@ -494,18 +487,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct
     display: none;
     flex-direction: column;
     gap: 10px;
-    z-index: 9999;
-    animation: fadeIn .25s ease;
+    z-index: 2147483646 !important;
   }
 
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
+  #chatPopup.open { display: flex !important; }
 
-  .chat-popup.open { display: flex; }
-
-  .chat-popup button {
+  #chatPopup button {
     border: none;
     border-radius: 12px;
     padding: 10px 12px;
@@ -514,19 +501,18 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct
     font-size: 15px;
     text-align: left;
     cursor: pointer;
-    transition: background .2s ease;
   }
 
-  .chat-popup button:hover {
+  #chatPopup button:hover {
     background: #374151;
   }
 </style>
 
 <!-- Кнопка -->
-<button class="chat-launcher" id="chatLauncher" aria-label="Открыть чат">💬</button>
+<button id="chatLauncher" aria-label="Открыть чат">💬</button>
 
 <!-- Popup -->
-<div class="chat-popup" id="chatPopup">
+<div id="chatPopup">
   <button onclick="window.open('https://widget.yourgood.app/#telegram','_blank')">📨 Telegram</button>
   <button onclick="window.open('https://widget.yourgood.app/#whatsapp','_blank')">💬 WhatsApp</button>
   <button onclick="window.open('https://widget.yourgood.app/#viber','_blank')">📱 Viber</button>
@@ -547,7 +533,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct
     }
   });
 </script>
-<!-- ====== Конец блока ====== -->
+
 
   </script>
 </body>
