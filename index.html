@@ -452,39 +452,103 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct
   }
 </style>
 
+<!-- ====== Кнопка и popup виджета ====== -->
+<style>
+  /* Кнопка чата */
+  .chat-launcher {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .chat-launcher:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+  }
+
+  /* Popup */
+  .chat-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    background: #0e1630;
+    color: white;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.5);
+    width: 280px;
+    padding: 16px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+    animation: fadeIn .25s ease;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .chat-popup.open { display: flex; }
+
+  .chat-popup button {
+    border: none;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #1f2937;
+    color: white;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+    transition: background .2s ease;
+  }
+
+  .chat-popup button:hover {
+    background: #374151;
+  }
+</style>
+
 <!-- Кнопка -->
-<button id="marquiz-button">Открыть квиз</button>
+<button class="chat-launcher" id="chatLauncher" aria-label="Открыть чат">💬</button>
 
 <!-- Popup -->
-<div id="marquiz-popup">
-  <div class="popup-content">
-    <div class="popup-header">
-      <h3>Квиз</h3>
-      <button class="popup-close" aria-label="Закрыть">✕</button>
-    </div>
-    <div class="popup-body">
-      <!-- Здесь твой Marquiz -->
-      <iframe src="https://mrqz.me/68ef5e84b9d1b10019fb7d48" allow="clipboard-write; microphone; camera"></iframe>
-    </div>
-    <div class="popup-footer">
-      <a href="https://widget.yourgood.app/#telegram" target="_blank" rel="noopener">Telegram</a>
-      <a href="https://widget.yourgood.app/#whatsapp" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://widget.yourgood.app/#open" target="_blank" rel="noopener">Позвонить</a>
-    </div>
-  </div>
+<div class="chat-popup" id="chatPopup">
+  <button onclick="window.open('https://widget.yourgood.app/#telegram','_blank')">📨 Telegram</button>
+  <button onclick="window.open('https://widget.yourgood.app/#whatsapp','_blank')">💬 WhatsApp</button>
+  <button onclick="window.open('https://widget.yourgood.app/#viber','_blank')">📱 Viber</button>
+  <button onclick="window.open('https://widget.yourgood.app/#open','_blank')">✨ Другой способ</button>
 </div>
 
 <script>
-  const mqButton = document.getElementById('marquiz-button');
-  const mqPopup = document.getElementById('marquiz-popup');
-  const mqClose = mqPopup.querySelector('.popup-close');
+  const chatBtn = document.getElementById('chatLauncher');
+  const chatPopup = document.getElementById('chatPopup');
 
-  mqButton.addEventListener('click', () => mqPopup.classList.add('open'));
-  mqClose.addEventListener('click', () => mqPopup.classList.remove('open'));
-  mqPopup.addEventListener('click', e => {
-    if (e.target === mqPopup) mqPopup.classList.remove('open');
+  chatBtn.addEventListener('click', () => {
+    chatPopup.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!chatPopup.contains(e.target) && !chatBtn.contains(e.target)) {
+      chatPopup.classList.remove('open');
+    }
   });
 </script>
+<!-- ====== Конец блока ====== -->
+
   </script>
 </body>
 </html>
